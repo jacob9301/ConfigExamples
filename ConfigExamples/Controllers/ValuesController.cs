@@ -40,5 +40,22 @@ namespace ConfigExamples.Controllers
 
             return Ok(val);
         }
+
+        [HttpGet("Test4")]
+        public IActionResult GetTest4()
+        {
+            var appSettings = new AppsettingsModel();
+            Configuration.GetSection("Values").Bind(appSettings);
+
+            return Ok(appSettings.Test2);
+        }
+
+        [HttpGet("Test5")]
+        public IActionResult GetTest5()
+        {
+            var appSettings = Configuration.GetSection("Values").Get<AppsettingsModel>();
+
+            return Ok(appSettings.Test1);
+        }
     }
 }
