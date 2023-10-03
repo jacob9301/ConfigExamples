@@ -7,16 +7,16 @@ namespace ConfigExamples.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        private readonly IConfiguration _configuration;
+        private readonly IConfiguration Configuration;
         public ValuesController(IConfiguration configuration) 
         {
-            _configuration = configuration;
+            Configuration = configuration;
         }
 
         [HttpGet("Test1")]
         public IActionResult GetTest1()
         {
-            string val = _configuration.GetSection("Values:Test1").Value;
+            string val = Configuration.GetSection("Values:Test1").Value;
 
             return Ok(val);
         }
@@ -24,7 +24,7 @@ namespace ConfigExamples.Controllers
         [HttpGet("Test2")]
         public IActionResult GetTest2()
         {
-            string val = _configuration.GetValue<string>("Values:Test2");
+            string val = Configuration.GetValue<string>("Values:Test2");
             
             return Ok(val);
         }
