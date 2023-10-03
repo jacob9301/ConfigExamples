@@ -1,3 +1,5 @@
+using ConfigExamples.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -17,6 +19,8 @@ builder.Services.AddCors(options =>
             policy.WithOrigins(allowedHosts);
         });
 });
+
+builder.Services.Configure<AppsettingsModel>(builder.Configuration.GetSection("Values"));
 
 var app = builder.Build();
 
